@@ -1,4 +1,4 @@
-package com.mk_sofia.sofiamain.ui.theme
+package com.mk_sofia.sofiamain.core.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
