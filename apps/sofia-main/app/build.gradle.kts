@@ -66,4 +66,14 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.kotlinx.coroutines.android)
+
+    // Network
+    implementation(libs.retrofit)
+    implementation(libs.okHttp)
+    implementation(libs.logging.interceptor)
+    implementation(libs.kotlinx.serialization)
+    implementation(libs.retrofit2.kotlinx.serialization.converter)
 }
