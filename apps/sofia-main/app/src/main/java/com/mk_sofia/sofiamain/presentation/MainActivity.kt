@@ -1,4 +1,4 @@
-package com.mk_sofia.sofiamain
+package com.mk_sofia.sofiamain.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -10,7 +10,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.mk_sofia.sofiamain.ui.theme.SofiaMainTheme
+import com.mk_sofia.sofiamain.core.ui.theme.SofiaMainTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
