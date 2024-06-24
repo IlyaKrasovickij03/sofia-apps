@@ -21,11 +21,11 @@ interface CategoriesContract : BaseMVI<
     }
 
     sealed interface Event {
-
+        data object GetAllCategories : Event
     }
 
     sealed interface Effect {
-
+        //TODO
     }
 
 }
