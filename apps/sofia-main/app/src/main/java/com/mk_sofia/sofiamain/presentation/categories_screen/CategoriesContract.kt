@@ -1,8 +1,8 @@
 package com.mk_sofia.sofiamain.presentation.categories_screen
 
 import com.mk_sofia.sofiamain.core.base.BaseMVI
+import com.mk_sofia.sofiamain.domain.models.CategoryModel
 
-private const val EMPTY_STRING = ""
 
 interface CategoriesContract : BaseMVI<
             CategoriesContract.State,
@@ -11,11 +11,11 @@ interface CategoriesContract : BaseMVI<
             > {
 
     data class State(
-        val categoryName: String
+        val categories: List<CategoryModel>
     ) {
         companion object {
             fun initial() = State(
-                categoryName = EMPTY_STRING
+                categories = emptyList()
             )
          }
     }
