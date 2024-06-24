@@ -5,10 +5,10 @@ import com.mk_sofia.sofiamain.domain.models.CategoryModel
 
 
 interface CategoriesContract : BaseMVI<
-            CategoriesContract.State,
-            CategoriesContract.Event,
-            CategoriesContract.Effect
-            > {
+        CategoriesContract.State,
+        CategoriesContract.Event,
+        CategoriesContract.Effect
+        > {
 
     data class State(
         val categories: List<CategoryModel>
@@ -17,7 +17,7 @@ interface CategoriesContract : BaseMVI<
             fun initial() = State(
                 categories = emptyList()
             )
-         }
+        }
     }
 
     sealed interface Event {
