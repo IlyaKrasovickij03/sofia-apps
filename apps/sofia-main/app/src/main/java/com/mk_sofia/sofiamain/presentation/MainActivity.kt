@@ -13,6 +13,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.mk_sofia.sofiamain.core.ui.theme.SofiaMainTheme
 import com.mk_sofia.sofiamain.data.network.api.SofiaNetworkApi
 import com.mk_sofia.sofiamain.data.repository.SofiaRepositoryImpl
+import com.mk_sofia.sofiamain.domain.usecases.GetAllCategoriesUseCase
 import com.mk_sofia.sofiamain.presentation.categories_screen.CategoriesScreen
 import com.mk_sofia.sofiamain.presentation.categories_screen.CategoriesViewModel
 
@@ -22,15 +23,20 @@ class MainActivity : ComponentActivity() {
         setContent {
             SofiaMainTheme {
                 val sofiaNetworkApi = SofiaNetworkApi()
+                val getAllCategoriesUseCase = GetAllCategoriesUseCase(
+                    sofiaRepository = SofiaRepositoryImpl(
+                        sofiaApi = sofiaNetworkApi
+                    )
+                )
                 val viewModel: CategoriesViewModel = viewModel(factory = CategoriesViewModel.Factory(
-                    sofiaRepository = SofiaRepositoryImpl(sofiaNetworkApi)
+                    getAllCategoriesUseCase = getAllCategoriesUseCase
                 ))
                 val uiState by viewModel.uiState.collectAsState()
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    CategoriesScreen(uiState = uiState, viewModel = viewModel)
+                    CategoriesScreen(uiState = uiState)
                 }
             }
         }
