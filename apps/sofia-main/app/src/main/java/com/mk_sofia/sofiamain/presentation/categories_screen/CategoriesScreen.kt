@@ -7,9 +7,7 @@ import androidx.compose.runtime.Composable
 @Composable
 fun CategoriesScreen(
     uiState: CategoriesContract.State,
-    viewModel: CategoriesViewModel,
 ) {
-    viewModel.event(CategoriesContract.Event.GetAllCategories)
     LazyColumn {
         items(uiState.categories) {
             CategoryWidget(

@@ -29,6 +29,10 @@ class CategoriesViewModel(
         _effect.update { null }
     }
 
+    init {
+        getAllCategories()
+    }
+
     private fun getAllCategories() {
         viewModelScope.launch {
             val categories = sofiaRepository.getAllCategories()
