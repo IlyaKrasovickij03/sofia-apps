@@ -3,6 +3,7 @@ package com.mk_sofia.sofiamain.presentation.categories_screen
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
+import com.mk_sofia.sofiamain.core.extensions.launchOnIo
 import com.mk_sofia.sofiamain.domain.usecases.GetAllCategoriesUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -33,7 +34,7 @@ class CategoriesViewModel(
     }
 
     private fun getAllCategories() {
-        viewModelScope.launch {
+        viewModelScope.launchOnIo {
             val categories = getAllCategoriesUseCase.execute()
             _uiState.update { currentState ->
                 currentState.copy(
