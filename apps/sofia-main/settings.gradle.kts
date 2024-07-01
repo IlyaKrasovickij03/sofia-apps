@@ -21,3 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "SofiaMain"
 include(":app")
+include(":feature-in-memory-cache")
