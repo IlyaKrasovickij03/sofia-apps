@@ -44,14 +44,4 @@ class CategoriesViewModel(
             }
         }
     }
-
-    internal class Factory(
-        private val getAllCategoriesUseCase: GetAllCategoriesUseCase,
-    ) : ViewModelProvider.NewInstanceFactory() {
-        @Suppress("UNCHECKED_CAST")
-        override fun <T : ViewModel> create(modelClass: Class<T>): T =
-            CategoriesViewModel(
-                getAllCategoriesUseCase = getAllCategoriesUseCase
-            ) as T
-    }
 }

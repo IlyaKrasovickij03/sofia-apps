@@ -72,6 +72,9 @@ dependencies {
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.coroutines.android)
 
+    // DI
+    implementation(libs.koin)
+
     // Network
     implementation(libs.retrofit)
     implementation(libs.okHttp)

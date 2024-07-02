@@ -16,21 +16,14 @@ import com.mk_sofia.sofiamain.data.repository.SofiaRepositoryImpl
 import com.mk_sofia.sofiamain.domain.usecases.GetAllCategoriesUseCase
 import com.mk_sofia.sofiamain.presentation.categories_screen.CategoriesScreen
 import com.mk_sofia.sofiamain.presentation.categories_screen.CategoriesViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             SofiaMainTheme {
-                val sofiaNetworkApi = SofiaNetworkApi()
-                val getAllCategoriesUseCase = GetAllCategoriesUseCase(
-                    sofiaRepository = SofiaRepositoryImpl(
-                        sofiaApi = sofiaNetworkApi
-                    )
-                )
-                val viewModel: CategoriesViewModel = viewModel(factory = CategoriesViewModel.Factory(
-                    getAllCategoriesUseCase = getAllCategoriesUseCase
-                ))
+                val viewModel: CategoriesViewModel by viewModel()
                 val uiState by viewModel.uiState.collectAsState()
                 Surface(
                     modifier = Modifier.fillMaxSize(),
