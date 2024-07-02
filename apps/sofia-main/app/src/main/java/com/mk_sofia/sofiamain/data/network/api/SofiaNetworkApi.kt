@@ -2,6 +2,7 @@ package com.mk_sofia.sofiamain.data.network.api
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import com.mk_sofia.sofiamain.data.network.models.NetworkCategoryModel
+import com.mk_sofia.sofiamain.data.network.models.NetworkProductModel
 import kotlinx.serialization.json.Json
 import okhttp3.HttpUrl
 import okhttp3.MediaType.Companion.toMediaType
@@ -10,11 +11,16 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.create
 import retrofit2.http.GET
+import retrofit2.http.Path
 
 interface SofiaNetworkApi {
     @GET("/api/category")
     suspend fun getAllCategories(): List<NetworkCategoryModel>
+
+    @GET("/api/category/{id}/products")
+    suspend fun getProductsByCategoryId(@Path("id") id: Int): List<NetworkProductModel>
 }
+
 
 fun SofiaNetworkApi(): SofiaNetworkApi {
     val httpLoggingInterceptor = HttpLoggingInterceptor()

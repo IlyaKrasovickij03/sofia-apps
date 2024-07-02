@@ -3,6 +3,7 @@ package com.mk_sofia.sofiamain.data.repository
 import com.mk_sofia.sofiamain.data.mappers.toDomain
 import com.mk_sofia.sofiamain.data.network.api.SofiaNetworkApi
 import com.mk_sofia.sofiamain.domain.models.CategoryModel
+import com.mk_sofia.sofiamain.domain.models.ProductModel
 import com.mk_sofia.sofiamain.domain.repository.SofiaRepository
 
 class SofiaRepositoryImpl(
@@ -11,5 +12,10 @@ class SofiaRepositoryImpl(
     override suspend fun getAllCategories(): List<CategoryModel> {
         val allNetworkCategories = sofiaApi.getAllCategories()
         return allNetworkCategories.toDomain()
+    }
+
+    override suspend fun getProductsByCategoryId(categoryId: Int): List<ProductModel> {
+        val productModels = sofiaApi.getProductsByCategoryId(id = categoryId)
+        return productModels.toDomain()
     }
 }

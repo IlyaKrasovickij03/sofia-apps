@@ -1,17 +1,17 @@
 package com.mk_sofia.sofiamain.presentation.categories_screen
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.mk_sofia.sofiamain.core.extensions.launchOnIo
+import com.mk_sofia.core.extensions.launchOnIo
 import com.mk_sofia.sofiamain.domain.usecases.GetAllCategoriesUseCase
+import com.mk_sofia.sofiamain.domain.usecases.GetProductsByCategoryIdUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
-import kotlinx.coroutines.launch
 
 class CategoriesViewModel(
     private val getAllCategoriesUseCase: GetAllCategoriesUseCase,
+    private val getProductsByCategoryIdUseCase: GetProductsByCategoryIdUseCase,
 ) : ViewModel(), CategoriesContract {
     private val _uiState = MutableStateFlow(CategoriesContract.State.initial())
     private val _effect = MutableStateFlow<CategoriesContract.Effect?>(null)
@@ -38,7 +38,7 @@ class CategoriesViewModel(
             val categories = getAllCategoriesUseCase.execute()
             _uiState.update { currentState ->
                 currentState.copy(
-                    categories = categories
+                    categoriesList = categories
                 )
 
             }
