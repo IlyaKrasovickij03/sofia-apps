@@ -4,7 +4,7 @@ import com.mk_sofia.sofiamain.domain.usecases.GetAllCategoriesUseCase
 import org.koin.dsl.module
 
 val domainModule = module {
-    factory {
+    factory<GetAllCategoriesUseCase> {
         GetAllCategoriesUseCase(sofiaRepository = get())
     }
 }
