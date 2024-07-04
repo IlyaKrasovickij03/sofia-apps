@@ -41,7 +41,10 @@ class CategoriesViewModel(
                 currentState.copy(
                     categoriesList = categories
                 )
+            }
 
+            categories.forEach { categoryModel ->
+                getProductsByCategoryId(categoryModel.id)
             }
         }
     }

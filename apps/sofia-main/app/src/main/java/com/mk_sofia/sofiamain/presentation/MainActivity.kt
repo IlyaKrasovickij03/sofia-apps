@@ -23,13 +23,11 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             com.mk_sofia.core.ui.theme.SofiaMainTheme {
-                val viewModel: CategoriesViewModel by viewModel()
-                val uiState by viewModel.uiState.collectAsState()
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    CategoriesScreen(uiState = uiState, viewModel = viewModel)
+                    CategoriesScreen()
                 }
             }
         }

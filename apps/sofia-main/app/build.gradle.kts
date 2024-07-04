@@ -74,6 +74,7 @@ dependencies {
 
     // DI
     implementation(libs.koin)
+    implementation(libs.koin.compose)
 
     // Network
     implementation(libs.retrofit)
