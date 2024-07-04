@@ -2,7 +2,7 @@ package com.mk_sofia.sofiamain.domain.models
 
 data class ProductModel(
     val id: Int,
-    val name: String,
+    val title: String,
     val price: Int,
     val purchase: String,
     val categoryId: Int,
@@ -13,5 +13,5 @@ data class ProductModel(
     val descriptionPreview: String,
     val furniture: String,
     val imageAll: List<String>,
-    val imagePreview: String,
+    val imagePreviewUrl: String,
 )

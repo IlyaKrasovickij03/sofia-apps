@@ -21,7 +21,8 @@ class CategoriesViewModel(
 
     override fun event(event: CategoriesContract.Event) {
         when(event) {
-            CategoriesContract.Event.GetAllCategories -> getAllCategories()
+            is CategoriesContract.Event.GetAllCategories -> getAllCategories()
+            is CategoriesContract.Event.GetProductsById -> getProductsByCategoryId(event.id)
         }
     }
 
@@ -41,6 +42,17 @@ class CategoriesViewModel(
                     categoriesList = categories
                 )
 
+            }
+        }
+    }
+
+    private fun getProductsByCategoryId(categoryId: Int) {
+        viewModelScope.launchOnIo {
+            val products = getProductsByCategoryIdUseCase.execute(categoryId = categoryId)
+            _uiState.update { currentState ->
+                currentState.copy(
+                    productsByCategoryIdList = products
+                )
             }
         }
     }

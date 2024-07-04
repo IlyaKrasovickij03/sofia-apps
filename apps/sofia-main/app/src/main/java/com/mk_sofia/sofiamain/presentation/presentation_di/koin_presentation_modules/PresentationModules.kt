@@ -6,6 +6,9 @@ import org.koin.dsl.module
 
 val presentationModule = module {
     viewModel<CategoriesViewModel> {
-        CategoriesViewModel(getAllCategoriesUseCase = get())
+        CategoriesViewModel(
+            getAllCategoriesUseCase = get(),
+            getProductsByCategoryIdUseCase = get()
+        )
     }
 }

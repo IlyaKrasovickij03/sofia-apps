@@ -1,23 +1,7 @@
 package com.mk_sofia.sofiamain.data.mappers
 
-import com.mk_sofia.sofiamain.data.network.models.NetworkCategoryModel
 import com.mk_sofia.sofiamain.data.network.models.NetworkProductModel
-import com.mk_sofia.sofiamain.domain.models.CategoryModel
 import com.mk_sofia.sofiamain.domain.models.ProductModel
-
-fun List<NetworkCategoryModel>.toDomain(): List<CategoryModel> {
-    val listCategoryModel = mutableListOf<CategoryModel>()
-    this.forEach {
-        listCategoryModel.add(
-            CategoryModel(
-                description = it.description,
-                id = it.id,
-                name = it.name
-            )
-        )
-    }
-    return listCategoryModel
-}
 
 fun List<NetworkProductModel>.toDomain(): List<ProductModel> {
     val listProductModel = mutableListOf<ProductModel>()
@@ -25,7 +9,7 @@ fun List<NetworkProductModel>.toDomain(): List<ProductModel> {
         listProductModel.add(
             ProductModel(
                 id = it.id,
-                name = it.name,
+                title = it.name,
                 price = it.price,
                 purchase = it.purchase,
                 categoryId = it.categoryId,
@@ -36,7 +20,7 @@ fun List<NetworkProductModel>.toDomain(): List<ProductModel> {
                 descriptionPreview = it.descriptionPreview,
                 furniture = it.furniture,
                 imageAll = it.imageAll,
-                imagePreview = it.imagePreview,
+                imagePreviewUrl = it.imagePreview,
             )
         )
     }

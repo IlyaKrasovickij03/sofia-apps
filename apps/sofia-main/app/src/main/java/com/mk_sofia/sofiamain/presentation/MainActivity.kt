@@ -29,7 +29,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    CategoriesScreen(uiState = uiState)
+                    CategoriesScreen(uiState = uiState, viewModel = viewModel)
                 }
             }
         }
