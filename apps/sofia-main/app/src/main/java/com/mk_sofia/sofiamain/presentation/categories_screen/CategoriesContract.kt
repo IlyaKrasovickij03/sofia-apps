@@ -6,26 +6,20 @@ import com.mk_sofia.sofiamain.domain.models.ProductModel
 
 
 interface CategoriesContract : BaseMVI<
-        CategoriesContract.State,
+        CategoriesContract.UiState,
         CategoriesContract.Event,
         CategoriesContract.Effect
         > {
 
-    data class State(
-        val categoriesList: List<CategoryModel>,
-        val productsByCategoryIdList: List<ProductModel>,
-    ) {
-        companion object {
-            fun initial() = State(
-                categoriesList = emptyList(),
-                productsByCategoryIdList = emptyList(),
-            )
-        }
+    sealed interface UiState {
+        data object Loading : UiState
+        data class Success(
+            val categoriesList: List<CategoryModel>,
+            val productsByCategoryIdList: List<ProductModel>,) : UiState
     }
 
     sealed interface Event {
-        data object GetAllCategories : Event
-        data class GetProductsById(val id: Int) : Event
+        data object UpdateProductsByCategories : Event
     }
 
     sealed interface Effect {
