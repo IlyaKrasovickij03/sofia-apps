@@ -23,3 +23,4 @@ rootProject.name = "SofiaMain"
 include(":app")
 include(":feature-in-memory-cache")
 include(":core")
+include(":feature-categories-screen")
