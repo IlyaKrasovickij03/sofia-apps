@@ -28,7 +28,7 @@ fun ProductCard(
         .height(height227)
         .width(width169)
     ) {
-        SofiaCachedImage(imageUrl = imageUrl,
+        com.mk_sofia.feature_sofia_cached_image.SofiaCachedImage(imageUrl = imageUrl,
             success = { imageBitmap ->
                 Image(
                     modifier = Modifier

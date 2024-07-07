@@ -1,5 +1,6 @@
-package com.mk_sofia.core.widgets
+package com.mk_sofia.feature_sofia_cached_image
 
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.asImageBitmap
@@ -17,6 +18,7 @@ fun SofiaCachedImage(
     if (imageBitmap != null) {
         success(imageBitmap)
     } else {
+        CircularProgressIndicator()
         SofiaImageCache
             .load(imageUrl = imageUrl)
     }
