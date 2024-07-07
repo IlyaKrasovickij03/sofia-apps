@@ -67,6 +67,5 @@ dependencies {
     implementation(libs.logging.interceptor)
     implementation(libs.kotlinx.serialization)
     implementation(libs.retrofit2.kotlinx.serialization.converter)
-
-    implementation(project(":feature-in-memory-cache"))
+    implementation(project(":lib-in-memory-cache"))
 }

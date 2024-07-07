@@ -1,4 +1,4 @@
-package com.mk_sofia.feature_in_memory_cache
+package com.mk_sofia.lib_in_memory_cache
 
 import org.junit.Test
 

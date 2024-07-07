@@ -1,4 +1,4 @@
-package com.mk_sofia.feature_in_memory_cache
+package com.mk_sofia.lib_in_memory_cache
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

@@ -1,15 +1,13 @@
-package com.mk_sofia.feature_in_memory_cache
+package com.mk_sofia.lib_in_memory_cache
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import androidx.collection.LruCache
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.net.URL
-import kotlin.coroutines.CoroutineContext
 
 object SofiaImageCache {
     private val coroutineCacheScope = CoroutineScope(context = Dispatchers.IO)
@@ -19,6 +17,7 @@ object SofiaImageCache {
             return super.sizeOf(key, value)
         }
     }
+
     fun load(imageUrl: String) {
         coroutineCacheScope.launch {
             val url = URL(imageUrl)

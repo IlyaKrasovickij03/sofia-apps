@@ -87,6 +87,6 @@ dependencies {
 
     // Modules
     implementation(project(":core"))
-    implementation(project(":feature-in-memory-cache"))
+    implementation(project(":lib-in-memory-cache"))
     implementation(project(":feature-categories-screen"))
 }
