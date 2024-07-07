@@ -10,7 +10,7 @@ val dataModule = module {
         SofiaRepositoryImpl(sofiaApi = get())
     }
 
-    factory<SofiaNetworkApi> {
+    factory<CategoriesScreenNetworkApi> {
         CategoriesScreenNetworkApi()
     }
 }

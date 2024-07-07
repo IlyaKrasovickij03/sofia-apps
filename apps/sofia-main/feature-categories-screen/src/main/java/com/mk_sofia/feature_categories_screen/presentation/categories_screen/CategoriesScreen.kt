@@ -1,6 +1,5 @@
 package com.mk_sofia.feature_categories_screen.presentation.categories_screen
 
-import android.util.Log
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -28,10 +27,6 @@ fun CategoriesScreen(
             ) {
                 items(items = (uiState as CategoriesContract.UiState.Success).categoriesList)
                 { categoryModel ->
-                    Log.d("AAAAAAAA", "ID категории:"+categoryModel.id.toString())
-                    (uiState as CategoriesContract.UiState.Success).productsByCategoryIdList.forEach {
-                        Log.d("AAAAAAAA", "ID категории и айди категории товара${mapOf(categoryModel.id to it.categoryId)} правда ли: ${if(categoryModel.id == it.categoryId) "true" else "false"}")
-                    }
                     CategoryWidget(
                         categoryName = categoryModel.name,
                         productList = (uiState as CategoriesContract.UiState.Success)
