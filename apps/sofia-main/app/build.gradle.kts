@@ -89,4 +89,5 @@ dependencies {
     implementation(project(":core"))
     implementation(project(":lib-in-memory-cache"))
     implementation(project(":feature-categories-screen"))
+    implementation(project(":feature-sofia-cached-image"))
 }

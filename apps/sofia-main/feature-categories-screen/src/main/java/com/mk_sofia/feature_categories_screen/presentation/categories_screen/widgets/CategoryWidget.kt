@@ -11,7 +11,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.mk_sofia.core.ui.theme.SofiaMainTheme
 import com.mk_sofia.core.ui.theme.height8
-import com.mk_sofia.core.widgets.ProductCard
 import com.mk_sofia.feature_categories_screen.domain.models.ProductModel
 
 @Composable

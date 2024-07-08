@@ -28,8 +28,8 @@ object SofiaImageCache {
         }
     }
 
-    fun get(imageId: String): Bitmap? {
-        return imageCache.get(imageId)
+    fun get(imageUrl: String): Bitmap? {
+        return imageCache.get(imageUrl)
     }
 }
 
