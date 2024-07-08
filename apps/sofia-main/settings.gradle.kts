@@ -21,3 +21,7 @@ dependencyResolutionManagement {
 
 rootProject.name = "SofiaMain"
 include(":app")
+include(":lib-in-memory-cache")
+include(":core")
+include(":feature-categories-screen")
+include(":feature-sofia-cached-image")
