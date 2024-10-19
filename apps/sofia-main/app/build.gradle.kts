@@ -24,10 +24,6 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
         }
     }
     compileOptions {
@@ -62,6 +58,7 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(project(":feature-auth-screens"))
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
@@ -87,7 +84,8 @@ dependencies {
 
     // Modules
     implementation(project(":core"))
-    implementation(project(":lib-in-memory-cache"))
     implementation(project(":feature-categories-screen"))
-    implementation(project(":feature-sofia-cached-image"))
+    implementation(platform("com.google.firebase:firebase-bom:33.4.0"))
+    implementation("com.google.firebase:firebase-analytics")
+    implementation("com.google.firebase:firebase-database-ktx")
 }

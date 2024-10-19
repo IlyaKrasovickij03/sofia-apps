@@ -25,7 +25,7 @@ fun CategoryWidget(
         Spacer(modifier = Modifier.height(height8))
         LazyRow {
             items(productList) { productModel ->
-                ProductCard(imageUrl = productModel.imagePreviewUrl,
+                ProductCard(
                     productTitle = productModel.title
                 )
             }

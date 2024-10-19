@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="enter_or_create_account">Войти или создать\nаккаунт</string>
+    <string name="enter_with_password">Войдите с паролем</string>
+    <string name="registry">Регистрация</string>
+    <string name="creating_password">Создание пароля</string>
+    <string name="get_code">Получить код</string>
+    <string name="enter_password_to_login">Введите пароль для входа в аккаунт:</string>
+    <string name="terms_of_use">Нажимая кнопку "Получить код", Вы соглашаетесь с условиями политики конфиденциальности</string>
+    <string name="terms_of_use_register">Я даю согласие на обработку персональных данных и принимаю условия пользовательского соглашения. </string>
+    <string name="change_data">изменить</string>
+    <string name="enter">Войти</string>
+    <string name="next">Далее</string>
+    <string name="forgot_password">Забыли пароль?</string>
+    <string name="phone_place_holder">"* *** ***-**-**"</string>
+    <string name="email_place_holder">"index@mail.com"</string>
+    <string name="password_place_holder">Введите пароль</string>
+    <string name="name_place_holder">Ваше имя</string>
+    <string name="birth_day_place_holder">11.05.1991</string>
+    <string name="title_name">Имя</string>
+    <string name="title_password">Пароль</string>
+    <string name="title_repeat_password">Повторите пароль</string>
+    <string name="title_email">Почта</string>
+    <string name="title_phone">Телефон</string>
+    <string name="title_birth_day_date">Дата рождения</string>
+</resources>

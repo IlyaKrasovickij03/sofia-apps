@@ -17,12 +17,17 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
     }
+    versionCatalogs {
+        create("libs") {
+            from(files("build-logic/libs.versions.toml"))
+        }
+    }
 }
 
 rootProject.name = "SofiaMain"
 include(":app")
-include(":lib-in-memory-cache")
 include(":core")
 include(":feature-categories-screen")
-include(":feature-sofia-cached-image")
 include(":feature-auth-screens")
+include(":feature-profile-screen")
+include(":build-logic")
