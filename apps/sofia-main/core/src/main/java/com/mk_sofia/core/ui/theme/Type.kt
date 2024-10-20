@@ -57,6 +57,8 @@ val Typography = Typography(
         lineHeight = 24.sp,
         letterSpacing = (-0.41).sp
     ),
+
+
     /* Other default text styles to override
     titleLarge = TextStyle(
         fontFamily = FontFamily.Default,
@@ -83,3 +85,29 @@ val Typography.bodyBold: TextStyle
         fontWeight = FontWeight(700),
         letterSpacing = (-0.41).sp,
     )
+
+val Typography.bodyRegular: TextStyle
+    get() = TextStyle(
+        fontFamily = robotoFontFamily,
+        fontSize = 17.sp,
+        lineHeight = 24.sp,
+        fontWeight = FontWeight(400),
+        letterSpacing = (-0.41).sp,
+    )
+
+val Typography.captionRegular: TextStyle
+    get() = TextStyle(
+        fontFamily = robotoFontFamily,
+        fontSize = 12.sp,
+        lineHeight = 16.sp,
+        fontWeight = FontWeight(400),
+    )
+
+val Typography.captionBold: TextStyle
+    get() = TextStyle(
+        fontFamily = robotoFontFamily,
+        fontSize = 12.sp,
+        lineHeight = 16.sp,
+        fontWeight = FontWeight(600),
+    )
+

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="top_bar_title">София</string>
+    <string name="materials_choosing_details">Детальный выбор материала</string>
+    <string name="characteristics">Характеристики</string>
+    <string name="description">Описание</string>
+    <string name="add_to_cart">Добавить в корзину</string>
+</resources>

@@ -1,5 +1,6 @@
 package com.mk_sofia.core.ui.widgets
 
+import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -11,18 +12,17 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
-import com.mk_sofia.core.R
 import com.mk_sofia.core.ui.theme.cornerRadius5
 import com.mk_sofia.core.ui.theme.height44
 
 @Composable
 fun SofiaCustomButton(
-    stringId: Int,
+    @StringRes textRes: Int,
+    modifier: Modifier = Modifier,
     onClick: () -> Unit = {},
 ) {
     Button(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .height(height44),
         onClick = onClick,
@@ -33,7 +33,7 @@ fun SofiaCustomButton(
             modifier = Modifier
                 .align(Alignment.CenterVertically)
                 .align(Alignment.CenterVertically),
-            text = stringResource(id = stringId),
+            text = stringResource(id = textRes),
             style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.surfaceVariant
         )

@@ -22,7 +22,10 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.mk_sofia.core.R
 import com.mk_sofia.core.ui.theme.SofiaMainTheme
+import com.mk_sofia.core.ui.theme.bodyBold
+import com.mk_sofia.core.ui.theme.bodyRegular
 import com.mk_sofia.core.ui.theme.height64
+import com.mk_sofia.core.ui.theme.iconDark
 import com.mk_sofia.core.ui.theme.padding12
 import com.mk_sofia.core.ui.theme.width12
 
@@ -31,7 +34,6 @@ fun SofiaTopAppBar(
     @DrawableRes iconRes: Int,
     @StringRes screenTitleRes: Int?,
     isNeedToShowIcon: Boolean,
-    isNeedToShowText: Boolean,
     onTopBarButtonClick: () -> Unit,
 ) {
     Row(
@@ -51,18 +53,18 @@ fun SofiaTopAppBar(
                         .align(Alignment.CenterVertically),
                     painter = painterResource(id = iconRes),
                     contentDescription = null,
-                    tint = Color.Unspecified,
+                    tint = MaterialTheme.colorScheme.iconDark,
                 )
             }
         }
         Spacer(modifier = Modifier.width(width12))
-        if (isNeedToShowText && screenTitleRes != null) {
+        if (screenTitleRes != null) {
             Text(
                 modifier = Modifier
                     .align(Alignment.CenterVertically),
-                text = stringResource(id = screenTitleRes),
-                style = MaterialTheme.typography.headlineMedium,
-                color = MaterialTheme.colorScheme.onPrimary
+                text = stringResource(id = screenTitleRes).toUpperCase(),
+                style = MaterialTheme.typography.bodyBold,
+                color = MaterialTheme.colorScheme.iconDark
             )
         }
     }
@@ -75,8 +77,7 @@ private fun SofiaTopAppBarPreview() {
         SofiaTopAppBar(
             iconRes = R.drawable.ic_arrow_back,
             isNeedToShowIcon = true,
-            isNeedToShowText = true,
-            screenTitleRes = null,
+            screenTitleRes = R.string.top_bar_title,
             onTopBarButtonClick = {}
         )
     }

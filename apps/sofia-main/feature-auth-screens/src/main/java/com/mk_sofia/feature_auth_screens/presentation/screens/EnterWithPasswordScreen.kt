@@ -19,7 +19,6 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import com.mk_sofia.core.ui.theme.SofiaMainTheme
-import com.mk_sofia.core.ui.theme.padding4
 import com.mk_sofia.core.ui.widgets.SofiaTopAppBar
 import com.mk_sofia.core.R
 import com.mk_sofia.core.ui.theme.height12
@@ -46,7 +45,6 @@ fun EnterWithPasswordScreen() {
             SofiaTopAppBar(
                 iconRes = R.drawable.ic_arrow_back,
                 isNeedToShowIcon = true,
-                isNeedToShowText = false,
                 screenTitleRes = null,
                 onTopBarButtonClick = { }
             )
@@ -84,7 +82,7 @@ fun EnterWithPasswordScreen() {
                 keyboardType = KeyboardType.Password
             )
             Spacer(modifier = Modifier.height(height24))
-            SofiaCustomButton(stringId = com.mk_sofia.feature_auth_screens.R.string.enter)
+            SofiaCustomButton(textRes = com.mk_sofia.feature_auth_screens.R.string.enter)
             Spacer(modifier = Modifier.height(height24))
             Text(
                 modifier = Modifier

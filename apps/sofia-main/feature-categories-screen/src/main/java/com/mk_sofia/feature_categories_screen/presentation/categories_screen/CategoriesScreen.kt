@@ -1,17 +1,23 @@
 package com.mk_sofia.feature_categories_screen.presentation.categories_screen
 
+import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.systemBarsPadding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -49,11 +55,16 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.mk_sofia.core.ui.theme.SofiaMainTheme
 import com.mk_sofia.core.ui.theme.bodyBold
+import com.mk_sofia.core.ui.theme.bodyRegular
+import com.mk_sofia.core.ui.theme.darkText2
+import com.mk_sofia.core.ui.theme.height64
 import com.mk_sofia.core.ui.theme.padding16
 import com.mk_sofia.core.ui.theme.padding8
 import com.mk_sofia.core.ui.widgets.SofiaTopAppBar
 import com.mk_sofia.feature_categories_screen.R
 import com.mk_sofia.feature_categories_screen.presentation.categories_screen.widgets.CategoryWidget
+import com.mk_sofia.feature_categories_screen.presentation.categories_screen.widgets.ShimmerEffect
+import kotlinx.coroutines.delay
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -63,7 +74,10 @@ fun CategoriesScreen(
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
     when (uiState) {
-        is CategoriesContract.UiState.Loading -> CircularProgressIndicator()
+        is CategoriesContract.UiState.Loading -> {
+            ShimmerContentUi()
+        }
+
         is CategoriesContract.UiState.Success -> {
             CategoriesScreenUi(
                 uiState = uiState
@@ -83,9 +97,8 @@ private fun CategoriesScreenUi(
         topBar = {
             SofiaTopAppBar(
                 iconRes = R.drawable.ic_arrow_back_24,
-                screenTitleRes = null,
+                screenTitleRes = R.string.top_bar_title,
                 isNeedToShowIcon = true,
-                isNeedToShowText = true,
                 onTopBarButtonClick = { /*TODO*/ }
             )
         },
@@ -109,12 +122,12 @@ private fun CategoriesScreenContent(
 
     LazyColumn(
         modifier = modifier
-            .padding(vertical = padding8, horizontal = padding16)
+            .padding(vertical = padding8)
             .background(MaterialTheme.colorScheme.surfaceVariant),
     ) {
         item {
-            ShopInfoDropDown()
-            Spacer(modifier = Modifier.height(9.dp))
+            ShopInfoDropDown(modifier = Modifier.padding(horizontal = padding16))
+            Spacer(modifier = Modifier.height(12.dp))
         }
         items(items = successUiState.categoriesList) { categoryModel ->
             CategoryWidget(
@@ -129,17 +142,27 @@ private fun CategoriesScreenContent(
 }
 
 @Composable
-private fun ShopInfoDropDown() {
+private fun ShopInfoDropDown(
+    modifier: Modifier = Modifier,
+) {
+    var isContentVisible by remember {
+        mutableStateOf(false)
+    }
+
     var isChecked by remember {
         mutableStateOf(false)
     }
 
     val newHeight = remember(isChecked) {
-        if (isChecked) 5 else 1
+        if (isChecked) 4 else 1
+    }
+
+    val addedHeight = remember(isChecked) {
+        if (isChecked) 24 else 0
     }
 
     val animatedHeight by animateDpAsState(
-        targetValue = 56.dp * newHeight,
+        targetValue = (56.dp * newHeight) + addedHeight.dp,
         animationSpec = tween(easing = FastOutSlowInEasing, durationMillis = 500),
         label = "ShopInfoDropDown"
     )
@@ -150,8 +173,17 @@ private fun ShopInfoDropDown() {
         label = "ArrowRotation"
     )
 
+    LaunchedEffect(isChecked) {
+        if (isChecked) {
+            isContentVisible = true
+        } else {
+            delay(500)
+            isContentVisible = false
+        }
+    }
+
     Card(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .height(animatedHeight),
         shape = RoundedCornerShape(10.dp),
@@ -163,6 +195,7 @@ private fun ShopInfoDropDown() {
             modifier = Modifier
                 .padding(16.dp)
                 .fillMaxWidth()
+                .height(24.dp)
                 .align(Alignment.CenterHorizontally),
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically,
@@ -186,22 +219,57 @@ private fun ShopInfoDropDown() {
             }
         }
 
-        if (isChecked) {
-            Spacer(modifier = Modifier.height(24.dp))
+        if (isContentVisible) {
             Text(
+                modifier = Modifier.padding(horizontal = 16.dp),
                 text = "Адрес магазина: г. Казань, ул. Сибирский Тракт, 34, корп. 1, (этаж 3)",
-                style = MaterialTheme.typography.bodyBold,
-                color = MaterialTheme.colorScheme.surface,
-                modifier = Modifier.padding(16.dp)
+                style = MaterialTheme.typography.bodyRegular,
+                color = MaterialTheme.colorScheme.primaryContainer,
             )
             Spacer(modifier = Modifier.height(12.dp))
-            Text(
-                text = "Адрес магазина: г. Казань, ул. Сибирский Тракт, 34, корп. 1, (этаж 3)",
-                style = MaterialTheme.typography.bodyBold,
-                color = MaterialTheme.colorScheme.surface,
-                modifier = Modifier.padding(16.dp)
+            LinkedText(
+                modifier = Modifier.padding(horizontal = 16.dp),
+                string = "mk-sofia.ru",
+            )
+            Spacer(modifier = Modifier.height(24.dp))
+            ClickableIconWithText(
+                iconRes = R.drawable.ic_logo_whatsapp_24,
+                textRes = R.string.write_to_whatsapp,
+                onClick = { /*TODO*/ }
+            )
+            Spacer(modifier = Modifier.height(24.dp))
+            ClickableIconWithText(
+                iconRes = R.drawable.ic_logo_telegram_24,
+                textRes = R.string.write_to_telegram,
+                onClick = { /*TODO*/ }
             )
         }
+    }
+}
+
+@Composable
+private fun ClickableIconWithText(
+    @DrawableRes iconRes: Int,
+    @StringRes textRes: Int,
+    onClick: () -> Unit,
+) {
+    Row(
+        modifier = Modifier
+            .padding(horizontal = 16.dp)
+            .clickable(onClick = onClick),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Icon(
+            painter = painterResource(id = iconRes),
+            contentDescription = null,
+            tint = Color.Unspecified,
+        )
+        Spacer(modifier = Modifier.width(12.dp))
+        Text(
+            text = stringResource(textRes),
+            style = MaterialTheme.typography.bodyRegular,
+            color = MaterialTheme.colorScheme.darkText2,
+        )
     }
 }
 
@@ -211,21 +279,67 @@ private fun LinkedText(
     modifier: Modifier = Modifier,
 ) {
     val annotatedString = buildAnnotatedString {
-        //pushStringAnnotation(tag = PROCESSING_PERSONAL_DATA_TAG, annotation = PROCESSING_PERSONAL_DATA_URI)
-        withStyle(style = SpanStyle(color = AtiTheme.colors.accent, textDecoration = TextDecoration.Underline)) {
-            append(stringResource(id = R.string.consent_to_the_processing_of_personal_data))
+        withStyle(
+            style = SpanStyle(
+                color = MaterialTheme.colorScheme.onPrimaryContainer,
+                textDecoration = TextDecoration.Underline,
+            )
+        ) {
+            append(string)
         }
-        pop()
     }
 
     ClickableText(
         modifier = modifier
-            .fillMaxWidth()
-            .padding(all = 16.dp),
+            .fillMaxWidth(),
         text = annotatedString,
-        style = ,
+        style = MaterialTheme.typography.bodyRegular,
         onClick = { },
-        },
+    )
+}
+
+@Composable
+private fun ShimmerContentUi() {
+    Column(
+        Modifier.fillMaxSize()
+    ) {
+
+        ShimmerEffect(modifier = Modifier
+            .height(height64)
+            .padding(horizontal = padding16)
+        )
+
+        ShimmerEffect(
+            modifier = Modifier
+                .height(56.dp)
+                .padding(top = padding8)
+                .padding(horizontal = padding16)
+        )
+
+        Spacer(modifier = Modifier.height(12.dp))
+
+        ShimmerEffect(
+            modifier = Modifier
+                .height(255.dp)
+                .padding(horizontal = padding16)
+        )
+
+        Spacer(modifier = Modifier.height(52.dp))
+
+        ShimmerEffect(
+            modifier = Modifier
+                .height(255.dp)
+                .padding(horizontal = padding16)
+        )
+
+        Spacer(modifier = Modifier.height(52.dp))
+
+        ShimmerEffect(
+            modifier = Modifier
+                .height(255.dp)
+                .padding(horizontal = padding16)
+        )
+    }
 }
 
 @Preview(showBackground = true, showSystemUi = true)

@@ -18,7 +18,6 @@ import com.mk_sofia.core.ui.theme.height12
 import com.mk_sofia.core.ui.theme.height24
 import com.mk_sofia.core.ui.theme.height32
 import com.mk_sofia.core.ui.theme.padding16
-import com.mk_sofia.core.ui.theme.padding4
 import com.mk_sofia.core.ui.widgets.SofiaCustomButton
 import com.mk_sofia.core.ui.widgets.SofiaTopAppBar
 import com.mk_sofia.feature_auth_screens.presentation.widgets.SofiaPrivateText
@@ -39,7 +38,6 @@ fun RegisterScreen() {
             SofiaTopAppBar(
                 iconRes = R.drawable.ic_arrow_back,
                 isNeedToShowIcon = true,
-                isNeedToShowText = true,
                 screenTitleRes = com.mk_sofia.feature_auth_screens.R.string.registry,
                 onTopBarButtonClick = {},
             )
@@ -76,7 +74,7 @@ fun RegisterScreen() {
                 titleId = com.mk_sofia.feature_auth_screens.R.string.title_birth_day_date
             )
             Spacer(modifier = Modifier.height(height32))
-            SofiaCustomButton(stringId = com.mk_sofia.feature_auth_screens.R.string.next)
+            SofiaCustomButton(textRes = com.mk_sofia.feature_auth_screens.R.string.next)
             Spacer(modifier = Modifier.height(height12))
             SofiaPrivateText(textId = com.mk_sofia.feature_auth_screens.R.string.terms_of_use_register)
         }

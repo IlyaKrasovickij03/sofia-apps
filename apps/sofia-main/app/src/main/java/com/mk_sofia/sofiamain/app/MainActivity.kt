@@ -8,6 +8,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import com.mk_sofia.core.ui.theme.SofiaMainTheme
+import com.mk_sofia.core.ui.widgets.ProductDetailsScreen
 import com.mk_sofia.feature_auth_screens.presentation.screens.EnterRegisterScreen
 import com.mk_sofia.feature_categories_screen.presentation.categories_screen.CategoriesScreen
 
@@ -20,7 +21,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    CategoriesScreen()
+                    ProductDetailsScreen()
                 }
             }
         }

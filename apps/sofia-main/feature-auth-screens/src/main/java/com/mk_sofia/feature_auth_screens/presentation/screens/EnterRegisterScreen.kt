@@ -1,6 +1,5 @@
 package com.mk_sofia.feature_auth_screens.presentation.screens
 
-import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -9,45 +8,30 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.google.firebase.FirebaseApp
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
-import com.mk_sofia.core.FirestoreCollections
 import com.mk_sofia.core.ui.theme.SofiaMainTheme
-import com.mk_sofia.core.ui.theme.cornerRadius5
 import com.mk_sofia.core.ui.theme.height100
 import com.mk_sofia.core.ui.theme.height11
 import com.mk_sofia.core.ui.theme.height25
 import com.mk_sofia.core.ui.theme.height40
-import com.mk_sofia.core.ui.theme.height44
 import com.mk_sofia.core.ui.theme.height68
 import com.mk_sofia.core.ui.theme.padding16
 import com.mk_sofia.core.ui.widgets.SofiaCustomButton
 import com.mk_sofia.feature_auth_screens.R
 import com.mk_sofia.feature_auth_screens.presentation.widgets.SofiaCustomTab
 import com.mk_sofia.feature_auth_screens.presentation.widgets.SofiaPrivateText
-import com.mk_sofia.feature_auth_screens.presentation.widgets.SofiaTextField
 import com.mk_sofia.feature_auth_screens.presentation.widgets.SofiaTextField2
-import com.mk_sofia.feature_categories_screen.data.network.models.NetworkCategoryModel
-import com.mk_sofia.feature_categories_screen.data.network.models.NetworkProductModel
 
 @Composable
 fun EnterRegisterScreen() {
@@ -88,7 +72,7 @@ fun EnterRegisterScreen() {
             PhoneOrEmailTextField(selectedItemId = selected)
             Spacer(modifier = Modifier.height(height25))
             SofiaCustomButton(
-                stringId = R.string.get_code,
+                textRes = R.string.get_code,
                 onClick = {
 //                    val database = FirebaseDatabase.getInstance().getReference("Kategory")
 //                    database.setValue(Kategory(1, "Kitchen"))
@@ -113,16 +97,16 @@ fun EnterRegisterScreen() {
 //                            val categories = it?.toObjects(NetworkCategoryModel::class.java)
 //                            Log.d("aaaaaaaa", categories.toString())
 //                        }
-                    val database = Firebase.firestore
-                    database.collection(FirestoreCollections.PRODUCTS.collectionName)
-                        .whereEqualTo("category_id", 1)
-                        .get()
-                        .addOnSuccessListener {
-                            it.documents.forEach { it1 ->
-                                val products = it1.toObject(NetworkProductModel::class.java)
-                                Log.d("aaaaaaaa", products.toString())
-                            }
-                        }
+//                    val database = Firebase.firestore
+//                    database.collection(FirestoreCollections.PRODUCTS.collectionName)
+//                        .whereEqualTo("category_id", 1)
+//                        .get()
+//                        .addOnSuccessListener {
+//                            it.documents.forEach { it1 ->
+//                                val products = it1.toObject(NetworkProductModel::class.java)
+//                                Log.d("aaaaaaaa", products.toString())
+//                            }
+//                        }
                 }
             )
             Spacer(modifier = Modifier.height(height11))
