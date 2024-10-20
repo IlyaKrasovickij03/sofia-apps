@@ -9,7 +9,7 @@ val presentationModule = module {
         CategoriesViewModel(
             getAllCategoriesUseCase = get(),
             getProductsByCategoryIdUseCase = get(),
+            getProductsByCategoryIdWithLimitUseCase = get()
         )
     }
-
 }

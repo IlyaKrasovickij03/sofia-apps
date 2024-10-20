@@ -38,16 +38,17 @@ fun ProductCard(
                 .width(width153)
                 .padding(horizontal = padding8)
                 .padding(top = padding8),
-            imageVector = ImageVector.vectorResource(R.drawable.kitchen_test),
+            painter = painterResource(R.drawable.kitchen_test),
             contentDescription = null
         )
+        Spacer(modifier = Modifier.height(height8))
+        Text(
+            modifier = Modifier
+                .padding(horizontal = padding8),
+            text = productTitle
+        )
     }
-    Spacer(modifier = Modifier.height(height8))
-    Text(
-        modifier = Modifier
-            .padding(horizontal = padding8),
-        text = productTitle
-    )
+
 }
 
 @Preview

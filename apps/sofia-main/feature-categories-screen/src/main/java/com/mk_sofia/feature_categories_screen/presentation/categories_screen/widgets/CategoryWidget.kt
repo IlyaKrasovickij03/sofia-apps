@@ -26,7 +26,7 @@ fun CategoryWidget(
         LazyRow {
             items(productList) { productModel ->
                 ProductCard(
-                    productTitle = productModel.title
+                    productTitle = productModel.name
                 )
             }
         }
@@ -39,7 +39,23 @@ private fun CategoryWidgetPreview() {
     SofiaMainTheme {
         CategoryWidget(
             categoryName = "Шкафы",
-            productList = emptyList()
+            productList = listOf(
+                ProductModel(
+                    id = 1,
+                    name = "Шкаф 1",
+                    categoryId = 1,
+                ),
+                ProductModel(
+                    id = 2,
+                    name = "Шкаф 2",
+                    categoryId = 2,
+                ),
+                ProductModel(
+                    id = 3,
+                    name = "Шкаф 3",
+                    categoryId = 3,
+                )
+            )
         )
     }
 }

@@ -74,3 +74,12 @@ val Typography = Typography(
     )
     */
 )
+
+val Typography.bodyBold: TextStyle
+    get() = TextStyle(
+        fontFamily = robotoFontFamily,
+        fontSize = 17.sp,
+        lineHeight = 24.sp,
+        fontWeight = FontWeight(700),
+        letterSpacing = (-0.41).sp,
+    )

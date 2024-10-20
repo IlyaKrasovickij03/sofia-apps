@@ -1,9 +1,8 @@
 package com.mk_sofia.sofiamain.app
 
 import android.app.Application
-import com.google.firebase.FirebaseApp
 import com.mk_sofia.feature_categories_screen.data.data_di.koin_data_modules.dataModule
-import com.mk_sofia.feature_categories_screen.domain.domain_di.koin_domain_modules.domainModule
+import com.mk_sofia.feature_categories_screen.domain.domainModule
 import com.mk_sofia.feature_categories_screen.presentation.presentationModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger

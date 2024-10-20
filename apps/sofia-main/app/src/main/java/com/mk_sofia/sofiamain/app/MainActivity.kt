@@ -7,8 +7,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
-import com.google.firebase.FirebaseApp
 import com.mk_sofia.core.ui.theme.SofiaMainTheme
 import com.mk_sofia.feature_auth_screens.presentation.screens.EnterRegisterScreen
 import com.mk_sofia.feature_categories_screen.presentation.categories_screen.CategoriesScreen
@@ -22,11 +20,10 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    EnterRegisterScreen()
+                    CategoriesScreen()
                 }
             }
         }
 
-        FirebaseApp.initializeApp(this)
     }
 }

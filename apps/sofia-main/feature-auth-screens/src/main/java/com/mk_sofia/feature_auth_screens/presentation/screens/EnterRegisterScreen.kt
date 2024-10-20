@@ -1,5 +1,6 @@
 package com.mk_sofia.feature_auth_screens.presentation.screens
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -27,6 +28,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.google.firebase.FirebaseApp
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
+import com.mk_sofia.core.FirestoreCollections
 import com.mk_sofia.core.ui.theme.SofiaMainTheme
 import com.mk_sofia.core.ui.theme.cornerRadius5
 import com.mk_sofia.core.ui.theme.height100
@@ -42,6 +46,8 @@ import com.mk_sofia.feature_auth_screens.presentation.widgets.SofiaCustomTab
 import com.mk_sofia.feature_auth_screens.presentation.widgets.SofiaPrivateText
 import com.mk_sofia.feature_auth_screens.presentation.widgets.SofiaTextField
 import com.mk_sofia.feature_auth_screens.presentation.widgets.SofiaTextField2
+import com.mk_sofia.feature_categories_screen.data.network.models.NetworkCategoryModel
+import com.mk_sofia.feature_categories_screen.data.network.models.NetworkProductModel
 
 @Composable
 fun EnterRegisterScreen() {
@@ -84,8 +90,39 @@ fun EnterRegisterScreen() {
             SofiaCustomButton(
                 stringId = R.string.get_code,
                 onClick = {
-                    val database = FirebaseDatabase.getInstance().getReference("Sofia")
-                    database.child("Kategory").setValue(Kategory(1, "Kitchen"))
+//                    val database = FirebaseDatabase.getInstance().getReference("Kategory")
+//                    database.setValue(Kategory(1, "Kitchen"))
+//
+//                    val fireStore = Firebase.firestore
+//                    fireStore
+//                        .collection("Kategories")
+//                        .document()
+//                        .set(Kategory(2, "Bathroom"))
+//
+//                    val a = fireStore.collection("Kategories")
+//                    val query = a.whereEqualTo("id", 2)
+//                    query.get().addOnSuccessListener { it ->
+//                        it.documents.forEach {
+//                            val kategory = it.toObject(Kategory::class.java)
+//                            Log.d("aaaaaaaa", kategory.toString())
+//                        }
+//                    }
+//                    val database = Firebase.firestore
+//                    database.collection(FirestoreCollections.CATEGORIES.collectionName)
+//                        .addSnapshotListener { it, _ ->
+//                            val categories = it?.toObjects(NetworkCategoryModel::class.java)
+//                            Log.d("aaaaaaaa", categories.toString())
+//                        }
+                    val database = Firebase.firestore
+                    database.collection(FirestoreCollections.PRODUCTS.collectionName)
+                        .whereEqualTo("category_id", 1)
+                        .get()
+                        .addOnSuccessListener {
+                            it.documents.forEach { it1 ->
+                                val products = it1.toObject(NetworkProductModel::class.java)
+                                Log.d("aaaaaaaa", products.toString())
+                            }
+                        }
                 }
             )
             Spacer(modifier = Modifier.height(height11))
@@ -94,9 +131,10 @@ fun EnterRegisterScreen() {
     }
 }
 
+
 data class Kategory(
-    val id: Int,
-    val name: String,
+    val id: Long = 0L,
+    val name: String = "",
 )
 
 @Composable

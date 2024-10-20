@@ -1,7 +1,8 @@
-package com.mk_sofia.feature_categories_screen.domain.domain_di.koin_domain_modules
+package com.mk_sofia.feature_categories_screen.domain
 
 import com.mk_sofia.feature_categories_screen.domain.usecases.GetAllCategoriesUseCase
 import com.mk_sofia.feature_categories_screen.domain.usecases.GetProductsByCategoryIdUseCase
+import com.mk_sofia.feature_categories_screen.domain.usecases.GetProductsByCategoryIdWithLimitUseCase
 import org.koin.dsl.module
 
 val domainModule = module {
@@ -10,5 +11,8 @@ val domainModule = module {
     }
     factory<GetProductsByCategoryIdUseCase> {
         GetProductsByCategoryIdUseCase(sofiaRepository = get())
+    }
+    factory<GetProductsByCategoryIdWithLimitUseCase> {
+        GetProductsByCategoryIdWithLimitUseCase(sofiaRepository = get())
     }
 }
